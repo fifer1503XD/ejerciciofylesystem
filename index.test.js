@@ -115,7 +115,7 @@ describe("3. Probando la implementación de appUser", () => {
     
         const readFile = jest.spyOn(fs, "readFile");
         
-        await app.addUser("Academlo");
+        await app.addUser("Academlo.");
     
         expect(readFile.mock.calls[0][0]).toBe(pathFile);
         

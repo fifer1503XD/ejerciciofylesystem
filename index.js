@@ -25,9 +25,9 @@ const addUser = async (username) => {
     const pathFile = await path.resolve(__dirname, 'users.json')
     let data = await fs.readFile(pathFile,"utf8")
     // let newData=await JSON.parse(data)
-    let newData = JSON.parse(data)
+    let newData = await JSON.parse(data)
     newData.push(username)
-    console.log('new',newData.toString())
+   
     data = JSON.stringify(newData)
     // console.log(data)
     fs.writeFile(pathFile,data, (error) => {
