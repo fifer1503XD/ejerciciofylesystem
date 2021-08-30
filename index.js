@@ -1,5 +1,6 @@
 //Imports de los módulos
 const fs = require("fs/promises");
+const { type } = require("os");
 const path = require("path")
 const readFileUsers = async() => {
      const pathFile = path.resolve(__dirname, 'users.json')
@@ -21,12 +22,14 @@ const writeHelloWorld = () => {
 };
 
 const addUser = async (username) => {
-    const pathFile = path.resolve(__dirname, 'users.json')
+    const pathFile = await path.resolve(__dirname, 'users.json')
     let data = await fs.readFile(pathFile,"utf8")
-    let newData=await JSON.parse(data)
+    // let newData=await JSON.parse(data)
+    let newData = JSON.parse(data)
     newData.push(username)
+    console.log('new',newData.toString())
     data = JSON.stringify(newData)
-    console.log(data)
+    // console.log(data)
     fs.writeFile(pathFile,data, (error) => {
         if(error){
             console.log("No se ha podido escribir en este archivo");
